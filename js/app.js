@@ -9,10 +9,26 @@ $(document).ready(function() {
           },
           lastName: {
             required: true,
-          }
-        }  
-        
-        
+            },
+          phoneNo: {
+              required: true,
+            },
+          dob: {
+            required: true,
+            },
+            sex: {
+                required: true,
+            },
+            country: {
+                required: true,
+            },
+            inputState: {
+                required: true,
+            },
+            localGov: {
+                required: true,
+            },
+        }
         
     })
     
