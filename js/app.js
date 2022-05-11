@@ -1,7 +1,17 @@
 $(document).ready(function() {
-    // $('#example').DataTable( {
-    //     "states": "data/arrays.txt"
-    // } );
+    //declaring variables
+    let myFirstName = $("#firstName").val();
+    let myLastName = $("#lastName").val();
+    let myMiddleName = $("#middleName").val();
+    let myPhoneNumber = $("phoneNo").val();
+    let dob = $("dob").val();
+    let gender = $("#sex").val();
+    let country = $("#country").val();
+    let state = $("inputState").val();
+    let localGov = $("#localGov").val();
+
+
+    //form validation
     $("#myform").validate({
         rules: {
             firstName: {
@@ -30,6 +40,10 @@ $(document).ready(function() {
             },
         }
         
+    });
+
+    $("submit").click(function(){
+    
     })
     
     
