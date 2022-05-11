@@ -1,9 +1,22 @@
 $(document).ready(function() {
-    // $('#main').html("Hello");
-    $('#example').DataTable( {
-        "states": "data/arrays.txt"
-    } );
-
+    // $('#example').DataTable( {
+    //     "states": "data/arrays.txt"
+    // } );
+    $("#myform").validate({
+        rules: {
+            firstName: {
+            required: true,
+          },
+          lastName: {
+            required: true,
+          }
+        }  
+        
+        
+        
+    })
+    
+    
 
 
 
