@@ -1,15 +1,18 @@
 $(document).ready(function() {
     //declaring variables
-    let myFirstName = $("#firstName").val();
-    let myLastName = $("#lastName").val();
-    let myMiddleName = $("#middleName").val();
-    let myPhoneNumber = $("phoneNo").val();
-    let dob = $("dob").val();
-    let gender = $("#sex").val();
+    let myFirstName = $("#firstName");
+    let myLastName = $("#lastName");
+    let myMiddleName = $("#middleName");
+    let myPhoneNumber = $("phoneNo");
+    let dob = $("dob");
+    let gender = $("#sex");
     let country = $("#country");
     let myState = $("#inputState").select2();
     let localGov = $("#localGov").select2();
     const url = "./states.json"
+
+    //initialization of datatable
+    $('#mytable').DataTable();
 
 
     //form validation
@@ -51,16 +54,9 @@ $(document).ready(function() {
                 const data = await res.json();
                 // console.log(data);
                 data.states.forEach(el => {
-                    console.log(el);
+                    console.log(el.lga[0]);
                    myState.append(`<option>${el.state}</option>`);
-                //    localGov.append(`<option>${el.lga[0]}</option>`);
-                })
-                
-
-                
-
-                
-                
+                });   
             } else {
                 throw new Error('something went wrong');
             }
@@ -82,21 +78,20 @@ $(document).ready(function() {
 
 
 
-    $('#mytable').DataTable();
 
     $("#submit").click(function(){
         $("#tableBody").html(
              `
             <tr>
-                <td>${myFirstName}</td>
-                <td>${myLastName}</td>
-                <td>${myMiddleName}</td>
-                <td>${dob}</td>
-                <td>${gender}</td>
-                <td>${country}</td>
-                <td>${myPhoneNumber}</td>
-                <td>${myState}</td>
-                <td>${localGov}</td>
+                <td>${myFirstName.val()}</td>
+                <td>${myLastName.val()}</td>
+                <td>${myMiddleName.val()}</td>
+                <td>${dob.val()}</td>
+                <td>${gender.val()}</td>
+                <td>${country.val()}</td>
+                <td>${myPhoneNumber.val()}</td>
+                <td>${myState.val()}</td>
+                <td>${localGov.val()}</td>
             </tr>
             `
         )
