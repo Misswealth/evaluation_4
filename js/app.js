@@ -6,9 +6,10 @@ $(document).ready(function() {
     let myPhoneNumber = $("phoneNo").val();
     let dob = $("dob").val();
     let gender = $("#sex").val();
-    let country = $("#country").val();
-    let state = $("inputState").val();
-    let localGov = $("#localGov").val();
+    let country = $("#country");
+    let myState = $("#inputState").select2();
+    let localGov = $("#localGov").select2();
+    const url = "./states.json"
 
 
     //form validation
@@ -42,8 +43,63 @@ $(document).ready(function() {
         
     });
 
-    $("submit").click(function(){
-    
+    //fetching json file
+    (async () => {
+        try {
+            const res = await fetch(url)
+            if (res.status === 200) {
+                const data = await res.json();
+                // console.log(data);
+                data.states.forEach(el => {
+                    console.log(el);
+                   myState.append(`<option>${el.state}</option>`);
+                //    localGov.append(`<option>${el.lga[0]}</option>`);
+                })
+                
+
+                
+
+                
+                
+            } else {
+                throw new Error('something went wrong');
+            }
+        } catch (error) {
+            console.log(error);
+        }finally {
+            console.log('Data has been fetched')
+        }
+    })();
+
+
+
+
+
+
+
+
+
+
+
+
+    $('#mytable').DataTable();
+
+    $("#submit").click(function(){
+        $("#tableBody").html(
+             `
+            <tr>
+                <td>${myFirstName}</td>
+                <td>${myLastName}</td>
+                <td>${myMiddleName}</td>
+                <td>${dob}</td>
+                <td>${gender}</td>
+                <td>${country}</td>
+                <td>${myPhoneNumber}</td>
+                <td>${myState}</td>
+                <td>${localGov}</td>
+            </tr>
+            `
+        )
     })
     
     
