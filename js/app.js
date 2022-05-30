@@ -52,11 +52,12 @@ $(document).ready(function() {
             const res = await fetch(url)
             if (res.status === 200) {
                 const data = await res.json();
-                // console.log(data);
+                // console.log(data.states);
                 data.states.forEach(el => {
-                    console.log(el.lga[0]);
+                    // console.log(el.lga[0]);
                    myState.append(`<option>${el.state}</option>`);
-                });   
+                //    localGov.append(`<option>${el.lga}</option>`);
+            });  
             } else {
                 throw new Error('something went wrong');
             }
